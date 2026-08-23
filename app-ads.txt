@@ -1,3 +1,1 @@
-# Dotto: Block Breaker - Yada Ink
-# Bu dosya sitenin KOKUNDE olmali: https://alanadin.com/app-ads.txt
 google.com, pub-4782717199115698, DIRECT, f08c47fec0942fa0
