@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dotto – Block Breaker</title>
+<meta name="description" content="Launch the balls, break the blocks. Get Dotto on Google Play or the App Store.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+
+<!-- Link preview (Instagram DMs, WhatsApp, etc.) -->
+<meta property="og:title" content="Dotto – Block Breaker">
+<meta property="og:description" content="Launch the balls, break the blocks.">
+<meta property="og:image" content="https://USERNAME.github.io/FOLDER/icon.png">
+<meta property="og:type" content="website">
+
+<script>
+  var ANDROID_PKG = "com.YadaInk.Dotto";
+  var IOS_ID      = "id6811563785";
+
+  // Pass UTM params to the Play Install Referrer (shows up in Firebase / GA4)
+  var q = new URLSearchParams(location.search);
+  var ref = "utm_source=" + (q.get("utm_source") || "smartlink") +
+            "&utm_medium=" + (q.get("utm_medium") || "link") +
+            "&utm_campaign=" + (q.get("utm_campaign") || "none");
+
+  var PLAY  = "https://play.google.com/store/apps/details?id=" + ANDROID_PKG +
+              "&referrer=" + encodeURIComponent(ref);
+  // No country code: every user lands on their own country's store
+  var APPLE = "https://apps.apple.com/app/" + IOS_ID;
+
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); // iPadOS
+  var isAndroid = /Android/i.test(ua);
+
+  if (isIOS) location.replace(APPLE);
+  else if (isAndroid) location.replace(PLAY);
+  // Desktop: stay on the page and show both store badges
+</script>
+
+<style>
+  :root {
+    --bg-top: #0f2a06; --bg-bottom: #4d8a0c;
+    --lime: #b6f21d; --ink: #ffffff; --muted: #d6efb3; --red: #e8113f;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: inherit; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    color: var(--ink);
+    font-family: "Trebuchet MS", system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: grid; place-items: center; text-align: center; padding: 24px;
+  }
+  .icon {
+    width: 132px; height: 132px; border-radius: 30px;
+    border: 3px solid var(--lime);
+    box-shadow: 0 0 0 6px rgba(182, 242, 29, .15);
+    display: block; margin: 0 auto 26px;
+  }
+  h1 { font-size: clamp(2.6rem, 10vw, 3.8rem); letter-spacing: -0.02em; line-height: 1; }
+  p { color: var(--muted); margin: 12px 0 32px; font-size: 1.05rem; }
+
+  .stores {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    justify-content: center; align-items: center;
+  }
+  .stores a { display: inline-flex; border-radius: 10px; }
+  .stores a:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+  /* Official badges. The Google Play PNG has built-in padding,
+     so it needs a larger height to visually match the Apple badge. */
+  .badge-apple  { height: 48px; width: auto; }
+  .badge-google { height: 71px; width: auto; margin: -11.5px -9px; }
+</style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="icon.png" alt="Dotto app icon" width="132" height="132">
+    <h1>Dotto</h1>
+    <p>Launch the balls, break the blocks.</p>
+    <nav class="stores" aria-label="Download Dotto">
+      <a id="apple" href="#">
+        <img class="badge-apple"
+             src="https://tools.applemarketingtools.com/api/badges/download-on-the-app-store/black/en-us"
+             alt="Download on the App Store">
+      </a>
+      <a id="play" href="#">
+        <img class="badge-google"
+             src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+             alt="Get it on Google Play">
+      </a>
+    </nav>
+  </main>
+  <script>
+    document.getElementById("play").href = PLAY;
+    document.getElementById("apple").href = APPLE;
+  </script>
+</body>
+</html>
